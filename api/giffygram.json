@@ -1,0 +1,53 @@
+{
+  "posts": [
+    {
+      "id": 1,
+    "title": "gif",
+    "description": "gif",
+    "imageURL": "https://tse2.mm.bing.net/th?id=OIP.d0mL-mvCtTBMIz5wU0kPogHaFj&pid=Api&P=0&w=232&h=175",
+    "timestamp": 654687,
+    "userId": 1
+    },
+    {
+      "id": 2,
+    "title": "gify",
+    "description": "gify",
+    "imageURL": "https://media.giphy.com/media/EfSUF3OkB2lc4/giphy.gif",
+    "timestamp": 65445878,
+    "userId": 2
+    },
+    {
+      "id": 3,
+    "title": "gifyy",
+    "description": "gify",
+    "imageURL": "https://thumbs.gfycat.com/UnequaledSneakyBighornedsheep-size_restricted.gif",
+    "timestamp": 6575724687,
+    "userId": 3
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+ 
+  "users": [
+    {
+      "id": 1,
+      "name": "ryan",
+      "email": "ryan.com"
+    },
+    {
+      "id": 2,
+      "name": "Bryan",
+      "email": "Bryansemail.com"
+    },
+    {
+      "name": "Bry",
+      "email": "Bryansemail.com",
+      "id": 3
+    }
+  ]
+}
