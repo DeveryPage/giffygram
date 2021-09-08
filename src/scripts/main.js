@@ -67,6 +67,14 @@ applicationElement.addEventListener("click", event => {
 applicationElement.addEventListener("click", handleGiffyClick)
 
 
+applicationElement.addEventListener("click", (event) => {
+	
+	if (event.target.id.startsWith("edit")){
+		console.log("post clicked", event.target.id.split("--"))
+		console.log("the id is", event.target.id.split("--")[1])
+	}
+})
+
 
 
 
