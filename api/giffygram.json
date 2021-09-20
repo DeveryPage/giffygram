@@ -1,28 +1,36 @@
 {
   "posts": [
     {
-      "id": 1,
-    "title": "gif",
-    "description": "gif",
-    "imageURL": "https://tse2.mm.bing.net/th?id=OIP.d0mL-mvCtTBMIz5wU0kPogHaFj&pid=Api&P=0&w=232&h=175",
-    "timestamp": 654687,
-    "userId": 1
+      "title": "",
+      "imageURL": "https://media.giphy.com/media/mUrBX1TF0kCRi/giphy.gif",
+      "description": "weird",
+      "userId": 1,
+      "timestamp": 1631134328142,
+      "id": 1
     },
     {
-      "id": 2,
-    "title": "gify",
-    "description": "gify",
-    "imageURL": "https://media.giphy.com/media/EfSUF3OkB2lc4/giphy.gif",
-    "timestamp": 65445878,
-    "userId": 2
+      "title": "",
+      "imageURL": "https://c.tenor.com/LgM9Fcg-tugAAAAM/funny-face-selfie.gif",
+      "description": "weird",
+      "userId": 1,
+      "timestamp": 1632150242571,
+      "id": 2
     },
     {
-      "id": 3,
-    "title": "gifyy",
-    "description": "gify",
-    "imageURL": "https://thumbs.gfycat.com/UnequaledSneakyBighornedsheep-size_restricted.gif",
-    "timestamp": 6575724687,
-    "userId": 3
+      "title": "",
+      "imageURL": "https://c.tenor.com/n54LwoCfvwYAAAAC/serverchad-when.gif",
+      "description": "git -a girlfriend.real\n",
+      "userId": 1,
+      "timestamp": 1632150297427,
+      "id": 3
+    },
+    {
+      "title": "",
+      "imageURL": "https://c.tenor.com/fWCx4pbgZaAAAAAC/cool-gif-laser.gif",
+      "description": "wow pretty neat\n",
+      "userId": 1,
+      "timestamp": 1632150329937,
+      "id": 4
     }
   ],
   "messages": [
@@ -32,7 +40,6 @@
       "postId": 1
     }
   ],
- 
   "users": [
     {
       "id": 1,
@@ -48,6 +55,21 @@
       "name": "Bry",
       "email": "Bryansemail.com",
       "id": 3
+    },
+    {
+      "id": 4,
+      "name": "Bryan",
+      "email": "Bryansemail.com"
+    },
+    {
+      "id": 5,
+      "name": "Bryan",
+      "email": "Bryansemail.com"
+    },
+    {
+      "id": 6,
+      "name": "Bryan",
+      "email": "Bryansemail.com"
     }
   ]
 }
