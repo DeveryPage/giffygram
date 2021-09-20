@@ -4,6 +4,10 @@ import { NavBar } from "./navBar.js";
 import { Footer } from "./footer.js";
 import { PostEntry } from "./PostEntry.js";
 import { deletePost } from "./DataManager.js";
+import { getSinglePost } from "./DataManager.js";
+import { PostEdit } from "./PostEdit.js";
+import { updatePost, getLoggedInUser } from "./DataManager.js";
+
 
 const formElement = document.querySelector(".giffygram")
 
@@ -43,7 +47,11 @@ const showUserList = () => {
   })
 }
 
-
+// editshown
+const showEdit = (postObj) => {
+  const entryElement = document.querySelector(".entryForm");
+  entryElement.innerHTML = PostEdit(postObj);
+}
 
 // YEAR SELECTION
 
@@ -138,17 +146,8 @@ formElement.addEventListener("click", event => {
         timestamp: Date.now()
     }
 
-    // DELETE
-    applicationElement.addEventListener("click", event => {
-      event.preventDefault();
-      if (event.target.id.startsWith("delete")) {
-        const postId = event.target.id.split("__")[1];
-        deletePost(postId)
-          .then(response => {
-            showPostList();
-          })
-      }
-    })
+    //Updating
+    
 
   
 
@@ -161,7 +160,57 @@ formElement.addEventListener("click", event => {
   }
 })
 
+applicationElement.addEventListener("click", event => {
+  event.preventDefault();
+  if (event.target.id.startsWith("updatePost")) {
+    const postId = event.target.id.split("__")[1];
+    //collect all the details into an object
+    const title = document.querySelector("input[name='postTitle']").value
+    const url = document.querySelector("input[name='postURL']").value
+    const description = document.querySelector("textarea[name='postDescription']").value
+    const timestamp = document.querySelector("input[name='postTime']").value
+    
+    const postObject = {
+      title: title,
+      imageURL: url,
+      description: description,
+      userId: getLoggedInUser().id,
+      timestamp: parseInt(timestamp),
+      id: parseInt(postId)
+    }
+    
+    updatePost(postObject)
+      .then(response => {
+        showPostList();
+      })
+  }
+})
 
+
+
+// DELETE
+applicationElement.addEventListener("click", event => {
+  event.preventDefault();
+  if (event.target.id.startsWith("delete")) {
+    const postId = event.target.id.split("__")[1];
+    deletePost(postId)
+      .then(response => {
+        showPostList();
+      })
+  }
+})
+
+// edit
+applicationElement.addEventListener("click", event => {
+  event.preventDefault();
+  if (event.target.id.startsWith("edit")) {
+    const postId = event.target.id.split("__")[1];
+    getSinglePost(postId)
+      .then(response => {
+        showEdit(response);
+      })
+  }
+})
 
 
 
