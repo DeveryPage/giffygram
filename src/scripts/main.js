@@ -6,7 +6,7 @@ import { PostEntry } from "./PostEntry.js";
 import { deletePost } from "./DataManager.js";
 import { getSinglePost } from "./DataManager.js";
 import { PostEdit } from "./PostEdit.js";
-import { updatePost, getLoggedInUser, logoutUser, setLoggedInUser, loginUser } from "./DataManager.js";
+import { updatePost, getLoggedInUser, logoutUser, setLoggedInUser, loginUser,registerUser } from "./DataManager.js";
 import { LoginForm } from "./LoginForm.js";
 import { RegisterForm } from "./RegisterForm.js";
 
@@ -224,6 +224,23 @@ applicationElement.addEventListener("click", event => {
 })
 
 
+applicationElement.addEventListener("click", event => {
+  event.preventDefault();
+  if (event.target.id === "register__submit") {
+    //collect all the details into an object
+    const userObject = {
+      name: document.querySelector("input[name='registerName']").value,
+      email: document.querySelector("input[name='registerEmail']").value
+    }
+    registerUser(userObject)
+    .then(dbUserObj => {
+      sessionStorage.setItem("user", JSON.stringify(dbUserObj));
+      startGiffyGram();
+    })
+  }
+})
+
+
 
 
 // DELETE
@@ -254,8 +271,11 @@ applicationElement.addEventListener("click", event => {
   if (event.target.id === "logout") {
     logoutUser();
     console.log(getLoggedInUser());
+    sessionStorage.clear();
+    checkForUser();
   }
 })
+
 
 const startGiffyGram = () => {
 	showPostList();
