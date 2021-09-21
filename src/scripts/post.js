@@ -19,6 +19,7 @@
       <section class="post">
         <header>
             <h2 class="post__title">${postObject.title}</h2>
+            <h2 class="post__title">${postObject.user.name}</h2>
             <p class="post__description">${postObject.description}</p>
         </header>
         <img class="post__image" src="${postObject.imageURL}" />
@@ -27,4 +28,3 @@
       </section>
     `
 }
-

@@ -17,20 +17,12 @@
       "id": 2
     },
     {
-      "title": "",
-      "imageURL": "https://c.tenor.com/n54LwoCfvwYAAAAC/serverchad-when.gif",
-      "description": "git -a girlfriend.real\n",
-      "userId": 1,
-      "timestamp": 1632150297427,
+      "title": "asdfasdf",
+      "imageURL": "https://cdn140.picsart.com/330970106009201.gif?to=min&r=1024",
+      "description": "asdfasdfa",
+      "userId": 11,
+      "timestamp": 1632257136999,
       "id": 3
-    },
-    {
-      "title": "",
-      "imageURL": "https://c.tenor.com/fWCx4pbgZaAAAAAC/cool-gif-laser.gif",
-      "description": "wow pretty neat\n",
-      "userId": 1,
-      "timestamp": 1632150329937,
-      "id": 4
     }
   ],
   "messages": [
@@ -67,14 +59,19 @@
       "email": "Bryansemail.com"
     },
     {
-      "name": "fsdfgsdfg",
-      "email": "dgfsdfgsdfg",
-      "id": 7
-    },
-    {
       "name": "boot",
       "email": "boot.com",
       "id": 8
+    },
+    {
+      "name": "DJ",
+      "email": "Dj@gmail.com",
+      "id": 9
+    },
+    {
+      "name": "lololol",
+      "email": "olololol",
+      "id": 11
     }
   ]
 }
