@@ -1,7 +1,7 @@
-const loggedInUser = {
-    id: 1,
-	name: "Bryan",
-	email: "bryan@bn.com"
+let loggedInUser = {}
+
+export const logoutUser = () => {
+  loggedInUser = {}
 }
 
 
@@ -19,6 +19,10 @@ export const getUsers = () => {
 
 export const getLoggedInUser = () => {
 	return loggedInUser;
+}
+
+export const setLoggedInUser = (userObj) => {
+  loggedInUser = userObj;
 }
 
 
@@ -95,14 +99,31 @@ export const getSinglePost = (postId) => {
     return fetch(`http://localhost:8088/posts/${postId}`)
       .then(response => response.json())
   }
-
-
-
-getUsers()
-.then(data => {
+  
+  
+  
+  
+  getUsers()
+  .then(data => {
     console.log("User Data", data)
-})
-
-
-
-
+  })
+  
+  
+  
+    export const loginUser = (userObj) => {
+      return fetch(`http://localhost:8088/users?name=${userObj.name}&email=${userObj.email}`)
+      .then(response => response.json())
+      .then(parsedUser => {
+        //is there a user?
+        console.log("parsedUser", parsedUser) //data is returned as an array
+        if (parsedUser.length > 0){
+          setLoggedInUser(parsedUser[0]);
+          return getLoggedInUser();
+        }else {
+          //no user
+          return false;
+        }
+      })
+    }
+  
+  

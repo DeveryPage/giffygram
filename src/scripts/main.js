@@ -1,4 +1,4 @@
-import { getPosts, getUsers, usePostCollection, createPost } from "./DataManager.js"
+import { getPosts,getUsers, usePostCollection, createPost } from "./DataManager.js"
 import { PostList } from "./postList.js";
 import { NavBar } from "./navBar.js";
 import { Footer } from "./footer.js";
@@ -6,7 +6,9 @@ import { PostEntry } from "./PostEntry.js";
 import { deletePost } from "./DataManager.js";
 import { getSinglePost } from "./DataManager.js";
 import { PostEdit } from "./PostEdit.js";
-import { updatePost, getLoggedInUser } from "./DataManager.js";
+import { updatePost, getLoggedInUser, logoutUser, setLoggedInUser, loginUser } from "./DataManager.js";
+import { LoginForm } from "./LoginForm.js";
+import { RegisterForm } from "./RegisterForm.js";
 
 
 const formElement = document.querySelector(".giffygram")
@@ -53,6 +55,9 @@ const showEdit = (postObj) => {
   entryElement.innerHTML = PostEdit(postObj);
 }
 
+
+
+
 // YEAR SELECTION
 
 applicationElement.addEventListener("change", event => {
@@ -77,41 +82,56 @@ applicationElement.addEventListener("change", event => {
   
   }
  
+  const checkForUser = () => {
+  	if (sessionStorage.getItem("user")){
+		  setLoggedInUser(JSON.parse(sessionStorage.getItem("user")));
+    	startGiffyGram();
+  	}else {
+   		showLoginRegister();
+  	}
+}
 
+const showLoginRegister = () => {
+  	showNavBar();
+  	const entryElement = document.querySelector(".entryForm");
+  	//template strings can be used here too
+  	entryElement.innerHTML = `${LoginForm()} <hr/> <hr/> ${RegisterForm()}`;
+  	//make sure the post list is cleared out too
+	const postElement = document.querySelector(".postList");
+	postElement.innerHTML = "";
+}
 
-
-
-  applicationElement.addEventListener("click", event => {
-    if (event.target.id === "home_image") {
+//   applicationElement.addEventListener("click", event => {
+//     if (event.target.id === "home_image") {
   
-      console.log(`you clicked home`)
-    }
-  })
+//       console.log(`you clicked home`)
+//     }
+//   })
 
 
-  applicationElement.addEventListener("click", event => {
-    if (event.target.id === "directMessageIcon") {
+//   applicationElement.addEventListener("click", event => {
+//     if (event.target.id === "directMessageIcon") {
   
-      console.log(`you clicked meesages`)
-    }
-  })
+//       console.log(`you clicked meesages`)
+//     }
+//   })
 
 
   
-applicationElement.addEventListener("click", event => {
-    if (event.target.id === "logout") {
+// applicationElement.addEventListener("click", event => {
+//     if (event.target.id === "logout") {
   
-      console.log(`You clicked log out}`)
-    }
-  })
+//       console.log(`You clicked log out}`)
+//     }
+//   })
   
-  const handleGiffyClick = (event) => {
-      console.log("What was clicked", event)
-      if (event.target.id === "logout") {
-          console.log("you clicked on logout")}
-  }
+//   const handleGiffyClick = (event) => {
+//       console.log("What was clicked", event)
+//       if (event.target.id === "logout") {
+//           console.log("you clicked on logout")}
+//   }
 
-applicationElement.addEventListener("click", handleGiffyClick)
+// applicationElement.addEventListener("click", handleGiffyClick)
 
 
 applicationElement.addEventListener("click", (event) => {
@@ -145,11 +165,6 @@ formElement.addEventListener("click", event => {
         userId: 1,
         timestamp: Date.now()
     }
-
-    //Updating
-    
-
-  
 
 
   // be sure to import from the DataManager
@@ -186,6 +201,29 @@ applicationElement.addEventListener("click", event => {
   }
 })
 
+applicationElement.addEventListener("click", event => {
+  event.preventDefault();
+  if (event.target.id === "login__submit") {
+    //collect all the details into an object
+    const userObject = {
+      name: document.querySelector("input[name='name']").value,
+      email: document.querySelector("input[name='email']").value
+    }
+    loginUser(userObject)
+    .then(dbUserObj => {
+      if(dbUserObj){
+        sessionStorage.setItem("user", JSON.stringify(dbUserObj));
+        startGiffyGram();
+      }else {
+        //got a false value - no user
+        const entryElement = document.querySelector(".entryForm");
+        entryElement.innerHTML = `</br> <p class="center">That user does not exist. Please try again or register for your free account.</p> ${LoginForm()} <hr/> <hr/> ${RegisterForm()}`;
+      }
+    })
+  }
+})
+
+
 
 
 // DELETE
@@ -212,7 +250,12 @@ applicationElement.addEventListener("click", event => {
   }
 })
 
-
+applicationElement.addEventListener("click", event => {
+  if (event.target.id === "logout") {
+    logoutUser();
+    console.log(getLoggedInUser());
+  }
+})
 
 const startGiffyGram = () => {
 	showPostList();
@@ -221,7 +264,8 @@ const startGiffyGram = () => {
     showUserList();
 }
 
-startGiffyGram();
+checkForUser();
+// startGiffyGram();
     
 
 
