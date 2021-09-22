@@ -6,7 +6,7 @@ import { PostEntry } from "./PostEntry.js";
 import { deletePost } from "./DataManager.js";
 import { getSinglePost } from "./DataManager.js";
 import { PostEdit } from "./PostEdit.js";
-import { updatePost, getLoggedInUser, logoutUser, setLoggedInUser, loginUser,registerUser } from "./DataManager.js";
+import { updatePost, getLoggedInUser, logoutUser, setLoggedInUser, loginUser,registerUser, postLike } from "./DataManager.js";
 import { LoginForm } from "./LoginForm.js";
 import { RegisterForm } from "./RegisterForm.js";
 
@@ -158,12 +158,12 @@ formElement.addEventListener("click", event => {
     const description = document.querySelector("textarea[name='postDescription']").value
     //we have not created a user yet - for now, we will hard code `1`.
     //we can add the current time as well
-    const userid = JSON.parse(sessionStorage.getItem("user"))
+    // const userid = JSON.parse(sessionStorage.getItem("user"))
     const postObject = {
         title: title,
         imageURL: url,
         description: description,
-        userId: userid.id,
+        userId: getLoggedInUser().id,
         timestamp: Date.now()
     }
 
@@ -240,6 +240,21 @@ applicationElement.addEventListener("click", event => {
     })
   }
 })
+
+applicationElement.addEventListener("click", event => {
+	event.preventDefault();
+	if (event.target.id.startsWith("like")) {
+	  const likeObject = {
+		 postId: parseInt(event.target.id.split("__")[1]),
+		 userId: getLoggedInUser().id
+	  }
+	  postLike(likeObject)
+		.then(response => {
+		  showPostList();
+		})
+	}
+  })
+
 
 
 

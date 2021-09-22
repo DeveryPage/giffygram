@@ -17,12 +17,20 @@
       "id": 2
     },
     {
-      "title": "asdfasdf",
-      "imageURL": "https://cdn140.picsart.com/330970106009201.gif?to=min&r=1024",
-      "description": "asdfasdfa",
-      "userId": 11,
-      "timestamp": 1632257136999,
+      "title": "trumpy",
+      "imageURL": "https://tse1.mm.bing.net/th?id=OIP.GQAdA59-D7EVXY-SEfIHDwHaEK&pid=Api&P=0&w=339&h=192",
+      "description": "goo",
+      "userId": 2,
+      "timestamp": 1632326569565,
       "id": 3
+    },
+    {
+      "title": "dug",
+      "imageURL": "https://media.giphy.com/media/3oEduH22FNY0FxuOpG/giphy.gif",
+      "description": "gut",
+      "userId": 2,
+      "timestamp": 1632326635365,
+      "id": 4
     }
   ],
   "messages": [
@@ -72,6 +80,13 @@
       "name": "lololol",
       "email": "olololol",
       "id": 11
+    }
+  ],
+  "userLikes": [
+    {
+      "postId": 1,
+      "userId": 1,
+      "id": 1
     }
   ]
 }
